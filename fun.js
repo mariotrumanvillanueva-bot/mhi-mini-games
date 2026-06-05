@@ -51,6 +51,7 @@
     renderQuestion();
   }
   function renderQuestion() {
+    answerLocked = false;
     const q = active[index];
     byId("questionText").textContent = q.q;
     byId("answers").innerHTML = "";
@@ -104,20 +105,44 @@
     if (!guess) return alert("Type an answer first.");
     byId("typedAnswer").value = ""; submitAnswer(guess === q.answer.toLowerCase());
   }
+  let answerLocked = false;
+
   function submitAnswer(ok, btn = null) {
+    if (answerLocked) return;
+    answerLocked = true;
+
     document.querySelectorAll(".answer-btn").forEach((b) => b.disabled = true);
+    document.querySelectorAll("#matchingBox select").forEach((s) => s.disabled = true);
+    const typedInput = byId("typedAnswer");
+    if (typedInput) typedInput.disabled = true;
+
     if (btn) btn.classList.add(ok ? "correct" : "wrong");
     if (ok) score += 10;
+
     byId("feedback").textContent = ok ? "Correct! Score: " + score : "Not quite. Score: " + score;
-    byId("nextBtn").disabled = false;
+
+    setTimeout(() => {
+      nextQuestion();
+    }, 900);
   }
+
   function nextQuestion() {
+    answerLocked = false;
+    const typedInput = byId("typedAnswer");
+    if (typedInput) typedInput.disabled = false;
+
     index++;
     if (index < active.length) return renderQuestion();
-    score += 5; saveScore();
+
+    score += 5;
+    saveScore();
+
     byId("questionText").textContent = "Game complete! Final score: " + score;
-    byId("answers").innerHTML = ""; byId("typedBox").classList.add("hidden"); byId("matchingBox").classList.add("hidden");
-    byId("nextBtn").disabled = true; byId("entryPanel").classList.remove("hidden");
+    byId("answers").innerHTML = "";
+    byId("typedBox").classList.add("hidden");
+    byId("matchingBox").classList.add("hidden");
+    byId("nextBtn").disabled = true;
+    byId("entryPanel").classList.remove("hidden");
   }
   function saveScore() {
     const scores = JSON.parse(localStorage.getItem("mhiFunScores") || "[]");
@@ -149,7 +174,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     byId("startBtn").addEventListener("click", startGame);
     byId("submitTypedBtn").addEventListener("click", submitTyped);
-    byId("nextBtn").addEventListener("click", nextQuestion);
+    byId("nextBtn").style.display = "none";
     byId("backBtn").addEventListener("click", backToMenu);
     byId("resetBtn").addEventListener("click", resetScores);
     byId("openKahootBtn").addEventListener("click", () => setKahoot(true));
