@@ -105,6 +105,9 @@
   function isKahootOpen() { return localStorage.getItem("mhiKahootOpen") === "true"; }
   function updateKahootStatus() { byId("kahootStatus").textContent = isKahootOpen() ? "Kahoot is OPEN" : "Kahoot is CLOSED"; }
   function shuffle(items) { return [...items].sort(() => Math.random() - 0.5); }
+  function shuffledChoices(question) {
+    return question.a.map((text, index) => ({ text, index })).sort(() => Math.random() - 0.5);
+  }
   function difficultyLabel(position) {
     if (position < 3) return "Easy";
     if (position < 6) return "Medium";
@@ -164,21 +167,21 @@
     selected = new Set();
     saveSession();
     if (q.type === "choice") {
-      q.a.forEach((txt, i) => {
+      shuffledChoices(q).forEach((choice) => {
         const b = document.createElement("button");
-        b.type = "button"; b.className = "answer-btn"; b.textContent = txt;
-        b.addEventListener("click", () => submitAnswer(i === q.c, b));
+        b.type = "button"; b.className = "answer-btn"; b.textContent = choice.text;
+        b.addEventListener("click", () => submitAnswer(choice.index === q.c, b));
         byId("answers").appendChild(b);
       });
     }
     if (q.type === "typed") byId("typedBox").classList.remove("hidden");
     if (q.type === "selectAll") {
-      q.a.forEach((txt, i) => {
+      shuffledChoices(q).forEach((choice) => {
         const b = document.createElement("button");
-        b.type = "button"; b.className = "answer-btn"; b.textContent = txt;
+        b.type = "button"; b.className = "answer-btn"; b.textContent = choice.text;
         b.addEventListener("click", () => {
-          if (selected.has(i)) { selected.delete(i); b.classList.remove("correct"); }
-          else { selected.add(i); b.classList.add("correct"); }
+          if (selected.has(choice.index)) { selected.delete(choice.index); b.classList.remove("correct"); }
+          else { selected.add(choice.index); b.classList.add("correct"); }
         });
         byId("answers").appendChild(b);
       });
@@ -257,10 +260,12 @@
 
     try {
       await api("submitFunScore", entry);
+      if (byId("leaderboardStatus")) byId("leaderboardStatus").textContent = "Shared leaderboard is live. Score saved for everyone to see.";
     } catch (e) {
       const scores = JSON.parse(localStorage.getItem("mhiFunScores") || "[]");
       scores.push(entry);
       localStorage.setItem("mhiFunScores", JSON.stringify(scores.slice(-100)));
+      if (byId("leaderboardStatus")) byId("leaderboardStatus").textContent = "Shared leaderboard is not connected. Score saved only on this browser.";
     }
 
     updateLeaderboard();
@@ -272,7 +277,9 @@
     try {
       const result = await api("funLeaderboard", {});
       scores = result.ok ? result.leaderboard : [];
+      if (byId("leaderboardStatus")) byId("leaderboardStatus").textContent = "Shared leaderboard is live. Updates every 15 seconds.";
     } catch (e) {
+      if (byId("leaderboardStatus")) byId("leaderboardStatus").textContent = "Shared leaderboard is not connected yet. Showing only this browser's local backup scores.";
       scores = JSON.parse(localStorage.getItem("mhiFunScores") || "[]")
         .sort((a, b) => b.score - a.score)
         .slice(0, 20);
