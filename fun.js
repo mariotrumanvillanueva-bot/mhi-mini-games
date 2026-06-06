@@ -34,6 +34,9 @@
       { type: "typed", q: "Unscramble: ROHROR", answer: "horror" },
       { type: "typed", q: "Unscramble: OECYDM", answer: "comedy" },
       { type: "typed", q: "Unscramble: LIVALNI", answer: "villain" }
+      { type: "typed", q: "Unscramble: WRVPWIE", answer: "preview" }
+      { type: "typed", q: "Unscramble: TRDROCTEI", answer: "director" }
+      { type: "typed", q: "Unscramble: BSRUTECKOBL", answer: "blockbuster" }
     ],
     SelectAll: [
       { type: "selectAll", q: "Select all movie snacks.", a: ["Popcorn", "Candy", "Soda", "Keyboard"], c: [0, 1, 2] },
