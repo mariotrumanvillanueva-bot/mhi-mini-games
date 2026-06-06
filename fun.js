@@ -43,7 +43,7 @@
       { type: "typed", q: "unscramble: CIMNEA", answer: "cinema" },
       { type: "typed", q: "unscramble: OREH", answer: "hero" },
       { type: "typed", q: "unscramble: ANILELIV", answer: "villain" },
-      { type: "typed", q: "unscramble: MECOADY", answer: "comedy" }
+      { type: "typed", q: "unscramble: MECODY", answer: "comedy" }
     ],
     SelectAll: [
       { type: "selectAll", q: "Select all movie snacks.", a: ["Popcorn", "Candy", "Soda", "Keyboard"], c: [0, 1, 2] },
