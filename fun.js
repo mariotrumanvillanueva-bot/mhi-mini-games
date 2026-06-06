@@ -32,7 +32,7 @@
       { type: "typed", q: "Unscramble: POCORPN", answer: "popcorn" },
       { type: "typed", q: "Unscramble: COTAR", answer: "actor" },
       { type: "typed", q: "Unscramble: ORREHR", answer: "horror" },
-      { type: "typed", q: "Unscramble: MECOADY", answer: "comedy" },
+      { type: "typed", q: "Unscramble: MECODY", answer: "comedy" },
       { type: "typed", q: "Unscramble: ANILELIV", answer: "villain" }
     ],
     SelectAll: [
