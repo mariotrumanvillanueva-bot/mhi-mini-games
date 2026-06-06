@@ -1,1 +1,92 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>MHI Mini Games</title><link rel="stylesheet" href="style.css"/></head><body><div class="app"><header class="hero"><div><p class="eyebrow">Just for Fun</p><h1>🎮 MHI Mini Games</h1><p>Free-range mini games for coworkers. Kahoot is included but must be opened by admin.</p></div><button id="resetBtn" class="secondary" type="button">Reset Local Scores</button></header><main class="layout"><section class="card game-zone"><div id="entryPanel"><h2>Choose a Game</h2><label>Nickname</label><input id="playerName" placeholder="Nickname" maxlength="40"/><label>Game Style</label><select id="gameSelect"><option value="Random">Random Mix</option><option value="Trivia">Trivia</option><option value="Emoji">Emoji Guess</option><option value="Scramble">Word Scramble</option><option value="SelectAll">Select All</option><option value="Matching">Matching</option><option value="Kahoot">Kahoot Round - Admin Open Required</option></select><button id="startBtn" type="button">Start</button><p class="hint">All games are free to play except Kahoot, which must be opened by admin. If you leave, your progress saves and you can rejoin with the same nickname and game.</p></div><div id="activePanel" class="hidden"><span id="gameBadge" class="pill">Game</span><h2 id="questionText">Question</h2><div id="answers" class="answers"></div><div id="typedBox" class="hidden"><input id="typedAnswer" placeholder="Type answer"/><button id="submitTypedBtn" type="button">Submit</button></div><div id="matchingBox" class="hidden matching-box"></div><button id="nextBtn" class="secondary" type="button" disabled>Next</button><button id="backBtn" class="secondary" type="button">Back to Menu</button><p id="feedback" class="feedback"></p></div></section><aside class="card side-board"><h2>Live Fun Leaderboard</h2><p id="leaderboardStatus" class="hint">Connecting to shared leaderboard...</p><ol id="leaderboard"></ol><div class="locked-export"><h3>Admin Controls</h3><input id="funAdminCode" type="password" placeholder="Admin code"/><button id="openKahootBtn" class="secondary" type="button">Open Kahoot</button><button id="closeKahootBtn" class="danger" type="button">Close Kahoot</button><p id="kahootStatus" class="hint"></p><h4>Delete User</h4><input id="deleteFunUserName" placeholder="Nickname to delete"/><button id="deleteFunUserBtn" class="danger" type="button">Delete User From Fun Leaderboard</button></div></aside></main></div><script src="config.js"></script><script src="fun.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MHI Mini Games</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Just for Fun</p>
+        <h1>MHI Mini Games</h1>
+        <p>Free-range mini games for coworkers. Kahoot is included but must be opened by admin.</p>
+      </div>
+      <button id="resetBtn" class="secondary" type="button">Clear Local Backup Scores</button>
+    </header>
+
+    <main class="layout">
+      <section class="card game-zone">
+        <div id="entryPanel">
+          <h2>Choose a Game</h2>
+          <label>Nickname</label>
+          <input id="playerName" placeholder="Nickname" maxlength="40"/>
+          <label>Game Style</label>
+          <select id="gameSelect">
+            <option value="Random">Random Mix</option>
+            <option value="Trivia">Trivia</option>
+            <option value="Emoji">Emoji Guess</option>
+            <option value="Scramble">Word Scramble</option>
+            <option value="SelectAll">Select All</option>
+            <option value="Matching">Matching</option>
+            <option value="Kahoot">Kahoot Round - Admin Open Required</option>
+          </select>
+          <button id="startBtn" type="button">Start</button>
+          <p class="hint">All games are free to play except Kahoot, which must be opened by admin. If you leave, progress saves and you can rejoin with the same nickname and game.</p>
+        </div>
+
+        <div id="activePanel" class="hidden">
+          <span id="gameBadge" class="pill">Game</span>
+          <h2 id="questionText">Question</h2>
+          <div id="answers" class="answers"></div>
+          <div id="typedBox" class="hidden">
+            <input id="typedAnswer" placeholder="Type answer"/>
+            <button id="submitTypedBtn" type="button">Submit</button>
+          </div>
+          <div id="matchingBox" class="hidden matching-box"></div>
+          <button id="nextBtn" class="secondary" type="button" disabled>Next</button>
+          <button id="backBtn" class="secondary" type="button">Back to Menu</button>
+          <p id="feedback" class="feedback"></p>
+        </div>
+      </section>
+
+      <aside class="card side-board">
+        <h2>Live Fun Leaderboard</h2>
+        <p id="leaderboardStatus" class="hint">Connecting to shared leaderboard...</p>
+        <ol id="leaderboard"></ol>
+
+        <div class="locked-export">
+          <h3>Admin Portal</h3>
+          <input id="funAdminCode" type="password" placeholder="Admin code"/>
+          <button id="adminLoginBtn" class="secondary" type="button">Unlock Admin Functions</button>
+          <p id="adminStatus" class="hint"></p>
+
+          <div id="adminPanel" class="hidden panel">
+            <h4>Kahoot Control</h4>
+            <button id="openKahootBtn" class="secondary" type="button">Open Kahoot</button>
+            <button id="closeKahootBtn" class="danger" type="button">Close Kahoot</button>
+            <p id="kahootStatus" class="hint"></p>
+
+            <h4>Delete Player</h4>
+            <input id="deleteFunUserName" placeholder="Nickname to delete"/>
+            <button id="deleteFunUserBtn" class="danger" type="button">Delete Player From Leaderboard</button>
+
+            <h4>Score Correction</h4>
+            <input id="adjustFunUserName" placeholder="Player nickname"/>
+            <input id="adjustFunPoints" type="number" placeholder="Points, ex: 10 or -5"/>
+            <input id="adjustFunReason" placeholder="Reason for correction"/>
+            <button id="adjustFunScoreBtn" class="secondary" type="button">Add / Remove Points</button>
+
+            <h4>Admin Output</h4>
+            <pre id="adminOutput"></pre>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+  <script src="config.js"></script>
+  <script src="fun.js"></script>
+</body>
+</html>
