@@ -35,15 +35,15 @@
     ],
     Scramble: [
       { type: "typed", q: "Unscramble: MLIF", answer: "film" },
-      { type: "typed", q: "Unscramble: POCORPN", answer: "popcorn" },
-      { type: "typed", q: "Unscramble: CESEN", answer: "scene" },
-      { type: "typed", q: "Unscramble: POLT", answer: "plot" },
+      { type: "typed", q: "Unscramble: NROPCOP", answer: "popcorn" },
+      { type: "typed", q: "Unscramble: ECSEN", answer: "scene" },
+      { type: "typed", q: "Unscramble: TOLP", answer: "plot" },
       { type: "typed", q: "Unscramble: COTAR", answer: "actor" },
-      { type: "typed", q: "unscramble: ORREHR", answer: "horror" },
-      { type: "typed", q: "unscramble: CIMNEA", answer: "cinema" },
+      { type: "typed", q: "unscramble: ORROHR", answer: "horror" },
+      { type: "typed", q: "unscramble: NIMCEA", answer: "cinema" },
       { type: "typed", q: "unscramble: OREH", answer: "hero" },
       { type: "typed", q: "unscramble: ANILELIV", answer: "villain" },
-      { type: "typed", q: "unscramble: MECODY", answer: "comedy" }
+      { type: "typed", q: "unscramble: DECOMY", answer: "comedy" }
     ],
     SelectAll: [
       { type: "selectAll", q: "Select all movie snacks.", a: ["Popcorn", "Candy", "Soda", "Keyboard"], c: [0, 1, 2] },
