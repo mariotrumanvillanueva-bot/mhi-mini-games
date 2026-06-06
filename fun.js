@@ -29,11 +29,11 @@
     ],
     Scramble: [
       { type: "typed", q: "Unscramble: MLIF", answer: "film" },
-      { type: "typed", q: "Unscramble: POCORPN", answer: "popcorn" },
+      { type: "typed", q: "Unscramble: COPONPR", answer: "popcorn" },
       { type: "typed", q: "Unscramble: COTAR", answer: "actor" },
-      { type: "typed", q: "Unscramble: ORREHR", answer: "horror" },
-      { type: "typed", q: "Unscramble: MECODY", answer: "comedy" },
-      { type: "typed", q: "Unscramble: ANILELIV", answer: "villain" }
+      { type: "typed", q: "Unscramble: OHREOR", answer: "horror" },
+      { type: "typed", q: "Unscramble: OECYDM", answer: "comedy" },
+      { type: "typed", q: "Unscramble: LIVALNI", answer: "villain" }
     ],
     SelectAll: [
       { type: "selectAll", q: "Select all movie snacks.", a: ["Popcorn", "Candy", "Soda", "Keyboard"], c: [0, 1, 2] },
