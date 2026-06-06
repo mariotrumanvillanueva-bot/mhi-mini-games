@@ -33,9 +33,9 @@
       { type: "typed", q: "Unscramble: COTAR", answer: "actor" },
       { type: "typed", q: "Unscramble: ROHROR", answer: "horror" },
       { type: "typed", q: "Unscramble: OECYDM", answer: "comedy" },
-      { type: "typed", q: "Unscramble: LIVALNI", answer: "villain" }
-      { type: "typed", q: "Unscramble: WRVPWIE", answer: "preview" }
-      { type: "typed", q: "Unscramble: TRDROCTEI", answer: "director" }
+      { type: "typed", q: "Unscramble: LIVALNI", answer: "villain" },
+      { type: "typed", q: "Unscramble: WRVPWIE", answer: "preview" },
+      { type: "typed", q: "Unscramble: TRDROCTEI", answer: "director" },
       { type: "typed", q: "Unscramble: BSRUTECKOBL", answer: "blockbuster" }
     ],
     SelectAll: [
