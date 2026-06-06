@@ -31,7 +31,7 @@
       { type: "typed", q: "Unscramble: MLIF", answer: "film" },
       { type: "typed", q: "Unscramble: COPONPR", answer: "popcorn" },
       { type: "typed", q: "Unscramble: COTAR", answer: "actor" },
-      { type: "typed", q: "Unscramble: OHREOR", answer: "horror" },
+      { type: "typed", q: "Unscramble: ROHROR", answer: "horror" },
       { type: "typed", q: "Unscramble: OECYDM", answer: "comedy" },
       { type: "typed", q: "Unscramble: LIVALNI", answer: "villain" }
     ],
